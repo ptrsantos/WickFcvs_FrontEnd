@@ -1,0 +1,48 @@
+:host ::ng-deep .mat-card-header-text {
+  width: 100%;
+  text-align: right;
+}
+
+.icon-lg {
+  font-size: 1.5rem; 
+}
+.mat-card:hover{
+
+  color:rgb(6, 56, 97);
+  opacity: 0.8;
+}
+
+.mat-card {
+  color: #fff;
+  height: 70%;
+  padding-bottom: 0%;
+  padding-top: 3%;
+  margin-bottom: 0%;
+  .mat-card-header {
+    width: 100%;
+    height: 40%;
+    padding-bottom: 0%;
+    padding-top: 0%;
+    .mat-card-avatar{
+      padding-top: 10px;
+    }
+  }
+  .mat-card-title {
+    height: 30%;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    font-size: 1.10rem;
+  }
+  &.danger {
+    background: linear-gradient(60deg, #ec407a, #d81b60);
+  }
+  &.warn {
+    background: linear-gradient(60deg, #ffa726, #fb8c00);
+  }
+  &.success {
+    background: linear-gradient(60deg, #66bb6a, #43a047);
+  }
+  &.info {
+    background: linear-gradient(60deg, #26c6da, #00acc1);
+  }
+}

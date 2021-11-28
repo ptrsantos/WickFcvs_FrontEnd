@@ -1,0 +1,39 @@
+<ngx-spinner
+  bdColor="rgba(25,118,210,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple"
+>
+  <p style="font-size: 20px; color: white">Aguarde...</p>
+</ngx-spinner>
+
+<app-top-nav class="fixed-topnav" fxHide.gt-xs></app-top-nav>
+
+<mat-sidenav-container>
+  
+  <mat-sidenav #appDrawer mode="over" opened="false">
+    
+      <!-- <div class="viewer-wrapper" >
+        <form class="hidden-sm" style="margin-right: 20px; margin-top: 8px">
+          <mat-form-field style="font-size: 0.8rem; width: 100%;">
+            <input matInput placeholder="Buscar">
+          </mat-form-field>
+        </form>
+      </div> -->
+
+    <mat-nav-list>
+      <app-menu-list-item #el  *ngFor="let item of navItems" [item]="item"></app-menu-list-item>
+      <!-- <app-app-menu-list-item *ngFor="let item of navItems" [item]="item"></app-app-menu-list-item> -->
+    </mat-nav-list>
+    <!-- <span class="nav-spacer"></span> -->
+
+
+
+  </mat-sidenav>
+
+  <app-top-nav fxHide.xs></app-top-nav>
+  <router-outlet></router-outlet>
+  <!-- <div fxFlex></div> -->
+  <!-- <span class="version-info">Current build: {{version.full ? version.full : version}}</span> -->
+
+</mat-sidenav-container>

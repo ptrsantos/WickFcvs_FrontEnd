@@ -1,0 +1,44 @@
+  <form class="login-form" #myForm="ngForm" [formGroup]="formLogin" (ngSubmit)="registrarLogin()">
+ 
+    <div class="text-center">
+      <h2 class="app-name">Registre-se</h2>
+    </div>
+  
+    <div fxLayout="row">
+      <div fxFlexFill>
+        <mat-form-field class="w-100">
+          <input matInput placeholder="Email" formControlName="email">
+        </mat-form-field>
+        <mat-form-field class="w-100">
+          <input matInput type="password" placeholder="Password" formControlName="password" >
+        </mat-form-field>
+      </div>
+    </div>
+  
+    <div fxLayout="row">
+      <div fxFlexFill>
+        <button type="submit" mat-raised-button color="primary" class="w-100">Confirmar</button>
+      </div>
+    </div>
+  
+    <div fxLayout="row">
+      <div fxFlexFill class="google-button-wrapper"  (click)="siginGoogle()">
+        <button mat-raised-button class="google-button">
+          <img class="google-button-icon" src="./assets/auth/google.svg" alt="google">Acesse através do Google
+        </button>
+      </div>
+    </div>
+
+ 
+    <div fxLayout="row">
+      <div fxFlexFill class="google-button-wrapper">
+        <button mat-raised-button class="google-button" (click)="siginFacebook()">
+          <img class="facebook-button-icon" src="./assets/auth/facebook2.svg" alt="google">Acesse através do Facebook
+        </button>
+      </div>
+    </div>
+  
+    <br>
+  
+  </form>
+

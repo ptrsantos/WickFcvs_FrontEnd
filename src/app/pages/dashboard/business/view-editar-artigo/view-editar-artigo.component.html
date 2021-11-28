@@ -1,0 +1,25 @@
+<mat-card fxFlex = "97" class="mat-elevation-z2 container">
+
+  <mat-card>
+    <form [formGroup]="form">
+      <mat-card-header style="justify-content: center">
+        <mat-form-field appearance="outline">
+          <mat-label>título</mat-label>
+          <input matInput  formControlName ="tituloArtigo">
+        </mat-form-field>
+
+        <mat-card-title>
+        </mat-card-title>
+
+      </mat-card-header>
+
+      <mat-card-content>
+        <app-ckeditor [conteudoParams]="conteudoArtigo" (enviarConteudoEditor)="receberConteudoEditor($event)">
+        </app-ckeditor>
+      </mat-card-content>
+    </form>
+  </mat-card>
+
+
+
+</mat-card>

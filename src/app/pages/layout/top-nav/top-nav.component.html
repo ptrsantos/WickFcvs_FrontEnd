@@ -1,0 +1,57 @@
+<mat-toolbar color="primary" class="mat-elevation-z1">
+
+  <button mat-icon-button id="menu" (click)="navService.checkNav()">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <button mat-icon-button id="home" (click)="navegarParaHome()">
+    <mat-icon>home</mat-icon>
+  </button>
+
+  <div class="nav-brand">
+    Wiki FCVS
+  </div>
+
+  <span class="nav-spacer"></span>
+
+  <!-- <form class="hidden-sm" style="margin-right: 20px; margin-top: 8px" *ngIf="perfil == 'Administrador'">
+    <mat-form-field style="font-size: 1rem;">
+      <input matInput placeholder="Search - Administrativo">
+    </mat-form-field>
+  </form> -->
+
+  <h4 *ngIf="perfil == 'Administrador'">Área Administrativa</h4>
+
+  <span class="nav-spacer"></span>
+
+  <h6  style="font-size:medium"> {{nomeUsuario}}</h6>
+
+
+  <button class="hidden-sm" mat-icon-button >
+    <mat-icon>account_circle</mat-icon>
+  </button>
+
+  <!-- <button class="hidden-sm" mat-icon-button [matMenuTriggerFor]="profile">
+    <mat-icon>account_circle</mat-icon>
+  </button> -->
+<!--
+  <mat-menu #profile="matMenu" [overlapTrigger]="false"> -->
+    <!-- <button mat-menu-item>
+      <mat-icon>person</mat-icon>
+      <span>Profile</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>inbox</mat-icon>
+      <span>Inbox</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>settings</mat-icon>
+      <span>Settings</span>
+    </button> -->
+  <!-- </mat-menu> -->
+  <button mat-icon-button (click)="onLoggedout()">
+    <mat-icon>exit_to_app</mat-icon>
+  </button>
+
+
+</mat-toolbar>

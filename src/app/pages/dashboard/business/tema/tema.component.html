@@ -1,0 +1,10 @@
+<mat-form-field>
+    <mat-label>Cadastrar Tema</mat-label>
+    <input matInput  placeholder="Insira um texto" [matAutocomplete]="auto" [formControl]="temaFormControl">
+    <mat-autocomplete  #auto="matAutocomplete" > 
+       <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+        {{option}}
+       </mat-option> 
+    </mat-autocomplete>
+</mat-form-field>
+

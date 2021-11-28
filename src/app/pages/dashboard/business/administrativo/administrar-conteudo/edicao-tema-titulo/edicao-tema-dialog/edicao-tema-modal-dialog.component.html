@@ -1,0 +1,35 @@
+<!-- <h1 mat-dialog-title>Título do Tema {{data.titulo}}</h1>
+<div mat-dialog-content>
+  <p>Editar título do tema</p>
+  <mat-form-field appearance="fill">
+    <mat-label>Titulo anterior</mat-label>
+    <input matInput [(ngModel)]="data.titulo" #input>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button (click)="Save(input)" cdkFocusInitial>Salvar</button>
+</div> -->
+
+
+<div #modalDialog>
+  <h2 mat-dialog-title style="justify-content: center" [innerHTML]="'Editar título'" ></h2>
+  <div>
+    <div mat-dialog-content style="height: 80%">
+
+      <form class="example-form" fxFlex="100">
+        <mat-form-field class="example-full-width" appearance="fill" fxFlex="100">
+          <mat-label>Título do Tema</mat-label>
+          <input matInput placeholder="Digite o título do tema" [value]="data.titulo"  #inputTema>
+        </mat-form-field>
+      </form>
+
+    </div>
+
+  </div>
+  <div mat-dialog-actions>
+    <!-- <button mat-raised-button color="accent" [mat-dialog-close]="inputTema" cdkFocusInitial style="color: white;">Salvar</button> -->
+    <button mat-raised-button color="accent" (click)="Save(inputTema)" cdkFocusInitial style="color: white;">Salvar</button>
+    <button mat-raised-button color="warn" (click)="cancelar()">Cancelar</button>
+  </div>
+</div>

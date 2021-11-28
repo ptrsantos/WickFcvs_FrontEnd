@@ -1,0 +1,22 @@
+<div #modalDialog>
+  <h2 mat-dialog-title style="justify-content: center" [innerHTML]="'Editar título'" ></h2>
+  <div>
+    <div mat-dialog-content style="height: 100%">
+
+      <form class="example-form" fxFlex="100">
+        <mat-form-field class="example-full-width" appearance="fill" fxFlex="100">
+          <mat-label>Título do Tema</mat-label>
+          <input matInput placeholder="Digite o título do tema" [value]="data.titulo"  #inputTema>
+        </mat-form-field>
+      </form>
+
+    </div>
+
+  </div>
+  <div mat-dialog-actions  fxLayout="row" fxLayoutAlign="space-around center">
+      <button mat-stroked-button color="warn" (click)="cancelar()" style="width: 7rem;">Cancelar</button>
+      <button mat-stroked-button color="primary" [mat-dialog-close]="inputTema" style="width: 7rem;" cdkFocusInitial >Salvar</button>
+  </div>
+</div>
+
+

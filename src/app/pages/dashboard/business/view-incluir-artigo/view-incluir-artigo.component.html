@@ -1,0 +1,65 @@
+<!-- <app-hearder-card-editar-artigo></app-hearder-card-editar-artigo> -->
+
+<mat-card fxFlex="97" fxFlex.sm="95"  class="mat-elevation-z2">
+
+  <mat-card-header style="justify-content: center">
+    <mat-card-title>
+      <h3 class="m-0">Formulário de edição</h3>
+    </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+
+    <!-- <h5>Antes de cadastar um arquivo é necessario clássifica-lo por tema. O tema é o assunto sobre o qual se quer escrever o artigo, por exemplo: Um artigo com o título "Lancamento de férias no sistema" teria como tema "Férias."</h5> -->
+
+    <form [formGroup]="form">
+      <div class="basic-container">
+
+        <mat-accordion>
+          
+          <mat-expansion-panel class="header-ativo">
+            <mat-expansion-panel-header >
+              <mat-panel-title > 
+                Tema
+              </mat-panel-title>
+              <mat-panel-description>
+                Escolha ou cadastre um tema do artigo que será inserido.
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <app-tema></app-tema>
+          </mat-expansion-panel>
+          
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Artigo
+              </mat-panel-title>
+              <mat-panel-description>
+                Cadastre o título do artigo.
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <app-artigo></app-artigo>
+          </mat-expansion-panel>
+
+
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Editor
+              </mat-panel-title>
+              <mat-panel-description>
+                  <span>Iniciar a edição do artigo.</span>  
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+             <app-ckeditor (enviarConteudoEditor)="receberConteudoEditor($event)"></app-ckeditor>
+          </mat-expansion-panel>
+
+        </mat-accordion>
+      
+      
+      </div> 
+
+      <!-- <app-ckeditor></app-ckeditor> -->
+    </form>
+  </mat-card-content>
+</mat-card>

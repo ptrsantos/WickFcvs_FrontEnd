@@ -1,0 +1,27 @@
+<ngx-spinner
+  bdColor="rgba(25,118,210,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple"
+>
+  <p style="font-size: 20px; color: white">Aguarde...</p>
+</ngx-spinner>
+
+<div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-around stretch" *ngIf="exibirHeaderCard" class="header-card-style">
+  <div class="mb10" fxFlex="24" fxFlex.lt-lg="49">
+    <app-header-card [bgClass]="'danger'" [icon]="'visibility'" [titulo]="'visualizacao'" [tituloBotao]="'Visualização'" [dadosRoutOutlet]="enviarDadosRouterOutlet"></app-header-card>
+  </div>
+  <div class="mb10" fxFlex="24" fxFlex.lt-lg="49">
+    <app-header-card [bgClass]="'warn'" [icon]="'build'" [titulo]="'edicao'" [tituloBotao]="'Edição'" [dadosRoutOutlet]="enviarDadosRouterOutlet"></app-header-card>
+  </div>
+  <div class="mb10" fxFlex="24" fxFlex.lt-lg="49">
+    <app-header-card [bgClass]="'success'" [icon]="'create'" [titulo]="'inclusao'" [tituloBotao]="'Inclusão'" [dadosRoutOutlet]="enviarDadosRouterOutlet"></app-header-card>
+  </div>
+  <div class="mb10" fxFlex="24" fxFlex.lt-lg="49">
+    <app-header-card [bgClass]="'info'" [icon]="'view_list'" [titulo]="'historico'" [tituloBotao]="'Histórico'" [dadosRoutOutlet]="enviarDadosRouterOutlet"></app-header-card>
+  </div>
+</div>
+
+<!-- <div class="mt20" fxLayout="row" fxLayoutAlign="space-between stretch" fxLayout.lt-md="column" fxLayoutGap="0px" style="height:100%" fxFlexFill>
+</div> -->
+<router-outlet></router-outlet>

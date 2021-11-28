@@ -1,0 +1,13 @@
+
+.cke_contents{
+    /*height: 10000px;*/
+    background-color: red;
+}
+
+/* #cke_1_contents{
+    height: 1000px;
+}*/
+.cke_editable {
+    /*min-height: 500px !important;*/
+    background-color: red;
+}

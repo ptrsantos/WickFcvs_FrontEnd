@@ -1,0 +1,29 @@
+<form class="sign-form" #myForm="ngForm" [formGroup]="formSign" (ngSubmit)="cadastrarUsuario()">
+  
+  <div class="text-center">
+    <h2 class="app-name">Cadastre-se</h2>
+  </div>
+
+  <div fxLayout="row">
+    <div fxFlexFill>
+      <mat-form-field class="w-100">
+        <input matInput placeholder="Email" formControlName="email">
+      </mat-form-field>
+      <mat-form-field class="w-100">
+        <input matInput type="password" placeholder="Senha" formControlName="password" >
+      </mat-form-field>
+      <mat-form-field class="w-100">
+        <input matInput type="password" placeholder="Confirmar senha" formControlName="confirmPassword" >
+      </mat-form-field>
+    </div>
+  </div>
+
+<br>
+
+  <div fxLayout="row">
+    <div fxFlexFill>
+      <button type="submit" mat-raised-button color="primary" class="w-100">Confirmar</button>
+    </div>
+  </div>
+  
+</form>

@@ -1,0 +1,33 @@
+
+<mat-grid-list cols="1" rowHeight="60px" gutterSize="10px"> <!--rowHeight="fit"-->
+    
+    <mat-grid-tile>
+        <mat-form-field id="artigoTitulo">
+            <mat-label>Cadastrar Título do artigo</mat-label>
+            <input matInput  placeholder="Insira um texto" [matAutocomplete]="auto" [formControl]="tituloArtigoFormControl">
+            <mat-autocomplete  #auto="matAutocomplete" > 
+               <mat-option *ngFor="let option of tituloFilteredOptions | async" [value]="option">
+                {{option}}
+               </mat-option> 
+            </mat-autocomplete>
+        </mat-form-field>
+    </mat-grid-tile>
+
+    <!-- <mat-grid-tile>
+        <mat-form-field id="artigoDescricao">
+            <mat-label>Cadastrar Descrição do artigo</mat-label>
+            <input matInput  placeholder="Insira um texto" [matAutocomplete]="auto" [formControl]="descricaoArtigoFormControl">
+            <mat-autocomplete  #auto="matAutocomplete" > 
+               <mat-option *ngFor="let option of descricaoFilteredOptions | async" [value]="option">
+                {{option}}
+               </mat-option> 
+            </mat-autocomplete>
+        </mat-form-field>
+    </mat-grid-tile> -->
+    
+</mat-grid-list>
+<br>
+<!-- <button mat-raised-button color="primary" (click)="exibirEditor()">Incializar edição</button> -->
+
+
+

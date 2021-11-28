@@ -1,0 +1,55 @@
+:host {
+  // display: flex;
+  // flex-direction: column;
+  // outline: none;
+  // width: 100%;
+
+  display: block;
+  outline: none;
+
+  .mat-list-item.active {
+    //background-color: mat-color(#3f51b5, 50);
+    background-color: #3f51b5;
+  }
+  &:hover,
+  &:focus {
+    >.mat-list-item:not(.expanded) {
+      //background-color:#3f51b5 !important;
+      background-color:#a3bfdb !important;
+      //background-color: linear-gradient(60deg, #26c6da, #2300c1) !important;
+    }
+  }
+}
+
+// .mat-list-item-content{
+//   color: blue;
+// }
+
+.mat-list-item {
+  padding: 8px 0;
+  color: #18188f;
+  // display: flex;
+  // width: auto;
+
+  .routeIcon {
+    margin-right: 40px;
+  }
+}
+
+
+.arrow {
+
+      width:120px;
+      margin-right: -15px;
+}
+
+.point {
+    position: relative;
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-right: 30px solid mat-color(#3f51b5, 100) !important;
+     float:right;
+}
+

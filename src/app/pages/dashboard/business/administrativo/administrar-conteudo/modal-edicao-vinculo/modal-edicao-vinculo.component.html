@@ -1,0 +1,97 @@
+
+
+<div #modalDialog>
+  <h2 mat-dialog-title style="justify-content: center" [innerHTML]="'Editar título'" ></h2>
+  <div>
+    <div mat-dialog-content style="height: 80%" class="container">
+
+
+      <div cdkDropListGroup>
+        <div class="example-container"
+          style='
+            width: 400px;
+            max-width: 100%;
+            margin: 0 25px 25px 0;
+            display: inline-block;
+            vertical-align: top;
+          '
+        >
+          <h2>To do</h2>
+
+          <div
+            cdkDropList
+            [cdkDropListData]="todo"
+            class="example-list"
+            (cdkDropListDropped)="drop($event)">
+            <div class="example-box"
+            style='
+              border: solid 1px #ccc;
+              min-height: 60px;
+              background: white;
+              border-radius: 4px;
+              overflow: hidden;
+              display: block;
+            '
+            *ngFor="let item of todo" cdkDrag>{{item}}</div>
+          </div>
+        </div>
+
+        <div class="example-container"
+        style="
+          width: 400px;
+          max-width: 100%;
+          margin: 0 25px 25px 0;
+          display: inline-block;
+          vertical-align: top;
+        "
+        >
+          <h2>Done</h2>
+
+          <div
+            cdkDropList
+            [cdkDropListData]="done"
+            class="example-list"
+            (cdkDropListDropped)="drop($event)"
+            style="
+              border: solid 1px #ccc;
+              min-height: 60px;
+              background: white;
+              border-radius: 4px;
+              overflow: hidden;
+              display: block;
+            "
+            >
+            <div class="example-box"
+            style="
+              padding: 20px 10px;
+              border-bottom: solid 1px #ccc;
+              color: rgba(0, 0, 0, 0.87);
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              justify-content: space-between;
+              box-sizing: border-box;
+              cursor: move;
+              background: white;
+              font-size: 14px;
+            "
+            *ngFor="let item of done" cdkDrag>{{item}}</div>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+
+
+
+  </div>
+  <div mat-dialog-actions>
+    <!-- <button mat-button (click)="onNoClick()" cdkFocusInitial>Voltar</button> -->
+    <!-- <button mat-raised-button color="primary">Primary</button> -->
+    <button mat-raised-button color="accent" (click)="salvar()" style="color: white;">Salvar</button>
+    <button mat-raised-button color="warn" (click)="cancelar()">Cancelar</button>
+  </div>
+</div>
+

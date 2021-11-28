@@ -1,0 +1,75 @@
+#container {
+    //display:block;
+    width: 98%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+}
+
+table{
+    margin-top: auto;
+    margin-left: 0px;
+    margin-right: 0px;
+    width: auto;
+    height: auto;
+    background-color: #f8f8ff;
+ }
+
+// #tabela{
+//     width: 100%;
+//     height: auto;
+//     background-color: red;
+// }
+
+::ng-deep .mat-snack-bar-container {
+  margin-top: 80% !important;
+}
+
+@media only screen and (max-width: 599px) and (orientation:portrait) {//and (max-width:599) only screen
+
+  #container {
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2%;
+
+   height: 100vw;
+
+   -webkit-transform: rotate(90deg);
+
+   -moz-transform: rotate(90deg);
+
+   -o-transform: rotate(90deg);
+
+   -ms-transform: rotate(90deg);
+
+   transform: rotate(90deg);
+
+  }
+
+}
+
+@media only screen and (orientation:landscape){
+
+  #container {
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2%;
+    // padding-left: 15%;
+    // padding-right: 15%;
+
+  -webkit-transform: rotate(0deg);
+
+  -moz-transform: rotate(0deg);
+
+  -o-transform: rotate(0deg);
+
+  -ms-transform: rotate(0deg);
+
+  transform: rotate(0deg);
+
+   }
+}
+

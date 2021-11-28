@@ -1,0 +1,15 @@
+.container{
+    background-color: #f8f8ff;
+    margin-top: 0%;
+    margin-right: auto;
+    margin-bottom: 2%;
+    margin-left: auto;
+    .mat-card-header {
+        width: 100%;
+        mat-form-field{
+            width: 100%;
+            margin-right: 3%;
+        }
+
+    }
+}

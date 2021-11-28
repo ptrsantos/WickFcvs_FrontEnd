@@ -1,0 +1,27 @@
+https://stackoverflow.com/questions/38209656/get-angular2-routing-working-on-iis-7-5
+
+My angular 6 app is running in a subfolder and I had problems with the appoach to redirect into the subfolder. Instead I redirect directly to the index.html
+
+Step 1.) Build angular app with the --base-href flag like this: ng build --prod --base-href /ng/
+
+Step 2.) Create a web.config in this folder with the redirct to the index.html like this:
+
+<configuration>
+  <system.webServer>
+    <rewrite>
+      <rules>
+        <rule name="Angular Routes" stopProcessing="true">
+          <match url=".*" />
+          <conditions logicalGrouping="MatchAll">
+            <add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" />
+            <add input="{REQUEST_FILENAME}" matchType="IsDirectory" negate="true" />
+          </conditions>
+          <action type="Rewrite" url="./index.html" />
+        </rule>
+      </rules>
+    </rewrite>
+  </system.webServer>
+</configuration>
+
+usar local host com https para autenticação facebook e google
+ng serve --o --ssl true --ssl-key ./node_modules/browser-sync/certs/server.key --ssl-cert ./node_modules/browser-sync/certs/server.crt

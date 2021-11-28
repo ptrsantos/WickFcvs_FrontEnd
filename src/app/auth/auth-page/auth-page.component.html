@@ -1,0 +1,19 @@
+<div class="auth-page">
+
+  <div class="content px20">
+
+    <mat-tab-group class="form">
+      
+      <mat-tab label="Registrar">
+        <app-login-form (sendLoginForm)="sendLoginForm($event)" (google)="signInWithGoogle()" (facebook)="signInWithFB()"></app-login-form>
+      </mat-tab>
+      
+      <mat-tab label="Novo Usuário">
+        <app-sign-form (sendSignForm)="sendSignForm($event)"></app-sign-form>
+      </mat-tab>
+
+    </mat-tab-group>
+
+  </div>
+
+</div>

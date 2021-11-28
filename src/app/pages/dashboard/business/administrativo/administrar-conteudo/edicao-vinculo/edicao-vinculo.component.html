@@ -1,0 +1,101 @@
+<mat-card
+  t-card
+  fxFlex="97"
+  fxFlex.sm="95"
+  fxFlex.xs="92"
+  fxLayout="column"
+  fxLayoutAlign="center"
+  class="mat-elevation-z2 container"
+  style="margin-top: 0%;"
+>
+  <mat-card-title style="margin-top: 0%;">Editar vinculação do título ao Tema</mat-card-title>
+  <mat-card style="margin-top: 0%;">
+    <mat-card-header style="margin-top: 0%;">
+      <div mat-card-avatar class="example-header-image"></div>
+    </mat-card-header>
+
+    <div class="box-container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-evenly center" fxLayoutAlign.xs="space-evenly center" style="border: 1px solid black">
+
+      <mat-form-field appearance="outline" style="width: 50%; margin-top: 1%; margin-right: 1%; padding-bottom: 0,5em;">
+        <mat-label>Selecione um Tema</mat-label>
+        <mat-select (selectionChange)="onChangeSelect($event)">
+          <mat-option
+            *ngFor="let tema of listaTemasSecundarios"
+            [value]="tema.id"
+          >
+            {{ tema.titulo }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button
+      mat-stroked-button
+        (click)="salvarEdicaoVinculo()"
+        color="primary"
+        matTooltip="Salvar edição do vinculo"
+        aria-label="ESalvar edição do vinculo"
+        style="width: 10rem; margin-bottom: 2%; margin-right: 1%;"
+      >
+        Salvar
+      </button>
+
+      <button
+      mat-stroked-button
+        (click)="cancelar()"
+        color="warn"
+        matTooltip="Cancelar e retornar"
+        aria-label="Cancelar e retornar"
+        style="width: 10rem; margin-bottom: 2%; margin-right: 1%;"
+      >
+        Cancelar
+      </button>
+
+    </div>
+
+    <mat-card-content>
+
+      <div class="box-container"  fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-evenly center" fxLayoutAlign.xs="space-evenly center" style="border: 1px solid black">
+
+        <div
+        #activeList="cdkDropList"
+        class="box-list"
+        cdkDropList
+        cdkDropListOrientation="vertical"
+        [cdkDropListData]="arrayTituloArtigosPrimarios"
+        [cdkDropListConnectedTo]="[inactiveList]"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <h4 class="box"><strong style="color: green;">{{ tituloTemaIncial }}</strong></h4>
+        <div
+          class="drag-box"
+          *ngFor="let artigo of arrayTituloArtigosPrimarios"
+          cdkDrag
+        >
+          {{ artigo }}
+        </div>
+      </div>
+
+      <div
+        #inactiveList="cdkDropList"
+        class="box-list"
+        cdkDropList
+        cdkDropListOrientation="vertical"
+        [cdkDropListData]="arrayTituloArtigosSecundarios"
+        [cdkDropListConnectedTo]="[activeList]"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <h4 class="box"><strong style="color: green;">{{ tituloTemaSecundario }}</strong></h4>
+        <div
+          class="drag-box"
+          *ngFor="let artigo of arrayTituloArtigosSecundarios"
+          cdkDrag
+        >
+          {{ artigo }}
+        </div>
+      </div>
+
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+</mat-card>

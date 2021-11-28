@@ -1,0 +1,28 @@
+<mat-card
+  t-card
+  fxFlex="97"
+  fxFlex.sm="95"
+  fxFlex.xs="92"
+  fxLayout="column"
+  fxLayoutAlign="center"
+  class="mat-elevation-z2 container"
+>
+
+<mat-card-header style="justify-content: center">
+  <mat-card-title>
+    <h2 class="mat-h2">
+      <strong>Artigo editado em texto puro sem formatação</strong>
+    </h2>
+  </mat-card-title>
+</mat-card-header>
+
+  <mat-card>
+    <mat-card-title class="mat-h1" style="font-size: 1.2rem;" [innerHTML]="titulo"></mat-card-title>
+    <mat-card-content [innerHtml]="conteudo">
+    </mat-card-content>
+  </mat-card>
+
+  <br>
+
+  <button mat-stroked-button color="primary" (click)="voltar()" style="width: 7%;">Voltar</button>
+</mat-card>
