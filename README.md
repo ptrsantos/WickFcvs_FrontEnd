@@ -1,2 +1,2 @@
 # WickFcvs_FrontEnd
-Projeto em angula de uma wiki coorporativa
+Projeto em angular de uma wiki coorporativa
