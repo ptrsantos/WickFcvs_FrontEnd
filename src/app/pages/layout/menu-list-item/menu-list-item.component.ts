@@ -49,6 +49,7 @@ export class MenuListItemComponent implements OnInit {
   }
 
   onItemSelected(item: NavItem) {
+
     if (item.children && item.children.length) {
         this.expanded = !this.expanded;
     }

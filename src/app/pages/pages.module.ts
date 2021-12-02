@@ -22,16 +22,17 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     NgxSpinnerModule
   ],
   exports: [
-    LayoutComponent, 
-    TopNavComponent, 
+    LayoutComponent,
+    TopNavComponent,
     SideNavComponent,
     MenuListItemComponent
   ],
   declarations: [
-    LayoutComponent, 
-    TopNavComponent, 
+    LayoutComponent,
+    TopNavComponent,
     SideNavComponent,
-    MenuListItemComponent
+    MenuListItemComponent,
+
   ]
 })
 export class PagesModule {}

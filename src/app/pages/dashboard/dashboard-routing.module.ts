@@ -15,7 +15,7 @@ import { AdministrarEstatisticaComponent } from './business/administrativo/admin
 import { EdicaoVinculoComponent } from './business/administrativo/administrar-conteudo/edicao-vinculo/edicao-vinculo.component';
 import { PageNotFoundComponent } from 'src/app/shared/page-not-found/page-not-found.component';
 import { ViewHistoricoDetalheEdicaoComponent } from './business/view-historico-detalhe-edicao/view-historico-detalhe-edicao.component';
-import { LoadGuard } from 'src/app/shared/core/load-guard';
+import { AuthAdminGuard } from 'src/app/shared/core/auth-adimn-guard';
 
 
 const routes: Routes = [
@@ -33,11 +33,6 @@ const routes: Routes = [
         pathMatch: 'full',
         component: ViewHomeComponent
       },
-      // {
-      //   path: 'artigo/:id',
-      //   component: ViewArtigoComponent,
-      //   pathMatch: 'full'
-      // },
       {
         path: 'artigo/:id',
         component: ViewArtigoComponent,
@@ -51,11 +46,6 @@ const routes: Routes = [
         pathMatch: 'full',
         component: ViewIncluirArtigoComponent
       },
-      // {
-      //   path: 'editar-artigo/:id',
-      //   pathMatch: 'full',
-      //   component: ViewEditarArtigoComponent
-      // },
       {
         path: 'editar-artigo/:id',
         pathMatch: 'full',
@@ -78,32 +68,28 @@ const routes: Routes = [
       {
         path: 'administrar-acessos',
         pathMatch: 'full',
-        canLoad: [LoadGuard],
+        canActivate: [AuthAdminGuard],
         component: AdministrarAcessoComponent
       },
       {
         path: 'administrar-conteudo',
         pathMatch: 'full',
-        canActivate: [LoadGuard],
+        canActivate: [AuthAdminGuard],
         component: AdministrarConteudoComponent
       },
       {
         path: 'administrar-estatistica',
         pathMatch: 'full',
-        canLoad: [LoadGuard],
+        canActivate: [AuthAdminGuard],
         component: AdministrarEstatisticaComponent
       },
       {
         path: 'editar-vinculo/:id',
         pathMatch: 'full',
-        canLoad: [LoadGuard],
-        canActivate: [LoadGuard],
+        canActivate: [AuthAdminGuard],
         component: EdicaoVinculoComponent
       },
-      // {
-      //   path: 'page-not-found',
-      //   component: PageNotFoundComponent,
-      // },
+
     ]
   }
 ];

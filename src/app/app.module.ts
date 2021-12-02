@@ -18,7 +18,7 @@ import { environment } from 'src/environments/environment';
 import { MaterialModule } from './utils/angular-material/material.module';
 import { NavService } from './pages/layout/nav.service';
 import { AuthGuard } from './shared/core/auth.guard';
-import { LoadGuard } from './shared/core/load-guard';
+import { AuthAdminGuard } from './shared/core/auth-adimn-guard';
 
 
 @NgModule({
@@ -55,7 +55,7 @@ import { LoadGuard } from './shared/core/load-guard';
     EncryptionDescryptionService,
     NavService,
     AuthGuard,
-    LoadGuard,
+    AuthAdminGuard,
     DexieService,
     {
       provide: 'SocialAuthServiceConfig',

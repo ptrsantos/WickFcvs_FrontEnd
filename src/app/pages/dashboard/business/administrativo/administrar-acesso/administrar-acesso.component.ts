@@ -6,6 +6,7 @@ import { UsuarioIdentityDto } from '../../model/dtos/usuarioIdentityDto';
 import { DashboardService } from '../../../services/dashboard.service';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -19,7 +20,7 @@ export class AdministrarAcessoComponent implements OnInit {
 
   listaDeUsuarios: UsuarioIdentityDto[] = []; //Usuario
   usuarioIdentity: UsuarioIdentityDto;
-
+  erros: any[] = []
   displayedColumns: string[] = ['userName', 'email', 'claimValue', 'bloqueado', 'acao'];
   dataSource: any = new MatTableDataSource<UsuarioIdentityDto>();
   panelOpenState = false;
@@ -31,7 +32,8 @@ export class AdministrarAcessoComponent implements OnInit {
               DashboardService, private spinnerService: NgxSpinnerService,
               media: MediaObserver,
               private snackBar: MatSnackBar,
-              private changeDetectorRefs: ChangeDetectorRef
+              private changeDetectorRefs: ChangeDetectorRef,
+              private toastrService: ToastrService
               )
   {
 
@@ -56,11 +58,6 @@ export class AdministrarAcessoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    // const width = this.table.nativeElement.getBoundingClientRect().width;
-    // this.renderer.setStyle(this.paginatorHtml.nativeElement, 'width', width + 'px');
-
-    this.spinnerService.show()
     this.listarUsuarios()
     //this.incializarTabela()
   }
@@ -102,62 +99,53 @@ export class AdministrarAcessoComponent implements OnInit {
 
   acaoBloqueio(usuario){
     this.spinnerService.show()
-    this.dashboardService.bloqueio(usuario).subscribe(response => {
-
-        let usuario: UsuarioIdentityDto = response.data;
-        this.listaDeUsuarios = this.listaDeUsuarios.map(item => {
-          if(item.id == usuario.id){
-            return usuario;
-          }else{
-            return item;
-          }
-        })
-        this.refresh()
-        this.spinnerService.hide()
-    });
+    this.dashboardService.bloqueio(usuario).subscribe(
+      sucesso => this.processarSucesso(sucesso),
+      falha => {
+        debugger
+        this.processarFalha(falha)
+      }
+    );
   }
 
   acaoAlterarPerfil(usuario){
     this.spinnerService.show();
-    this.dashboardService.alterarPerfil(usuario).subscribe(response => {
-
-        let usuario: UsuarioIdentityDto = response.data;
-        this.listaDeUsuarios = this.listaDeUsuarios.map(item => {
-          if(item.id == usuario.id){
-            return usuario;
-          }else{
-            return item;
-          }
-        })
-        this.refresh();
-        this.spinnerService.hide()
-    });
+    this.dashboardService.alterarPerfil(usuario).subscribe(
+      sucesso => this.processarSucesso(sucesso),
+      falha => this.processarFalha(falha)
+    );
   }
 
-  // @HostListener('window: orientationchange', ['$event'])
-  // onOrientationChange(event) {
-  //     debugger
-  //   // alert('orientationChanged');
+  processaAlteracao(response){
 
-  //   this.deviceInfo = this.deviceService.getDeviceInfo();
-  //   const isMobile = this.deviceService.isMobile();
-  //   const isTablet = this.deviceService.isTablet();
-  //   // const isDesktopDevice = this.deviceService.isDesktop();
-  //   // (this.deviceInfo);
-  //   // (isMobile);  // returns if the device is a mobile device (android / iPhone / windows-phone etc)
-  //   // (isTablet);  // returns if the device us a tablet (iPad etc)
-  //   // (isDesktopDevice); // returns if the app is running on a Desktop browser.
+    let usuario: UsuarioIdentityDto = response.data;
+    this.listaDeUsuarios = this.listaDeUsuarios.map(item => {
+      if(item.id == usuario.id){
+        return usuario;
+      }else{
+        return item;
+      }
+    })
+    this.refresh();
+    this.spinnerService.hide()
+  }
 
-  //   this.verificarOrientacao()
-  // }
+  processarSucesso(response) {
+    this.erros = [];
+    let toastr = this.toastrService.success("Operação realizado com sucesso.", "Parabéns: ")
+    if (toastr) {
+      this.processaAlteracao(response)
+    }
+  }
 
-  // verificarOrientacao(){
-  //   if(!this.deviceService.isDesktop()){
-  //     //(window.innerHeight)
-  //     if(window.innerHeight > window.innerWidth){
-  //       alert("Para uma melhor visualização use o aparelho na horizontal!");
-  //     }
-  //   }
-  // }
+  processarFalha(fails: any) {
+    debugger
+    if(fails.error.errors == undefined || fails.error.errors.length == 0){
+      this.toastrService.error(fails.message.toString(), "Ocorreu um erro:")
+    }else{
+      this.erros = fails.error.errors;
+      this.toastrService.error(this.erros.toString(), "Ocorreu um erro:")
+    }
+  }
 
 }

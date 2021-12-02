@@ -46,13 +46,9 @@ export class ViewHistoricoDetalheEdicaoComponent implements OnInit {
   }
 
   processarFalha(fails: any) {
-    if(fails.status){
-      this.toastrService.error(fails.message.toString(), "Ocorreu um erro:")
-    }else{
-      this.erros = fails.error.errors;
-      this.toastrService.error(this.erros.toString(), "Ocorreu um erro:")
-    }
-  }
+    this.erros = fails.error.errors;
+    this.toastrService.error(this.erros.toString(), "Ocorreu um erro:")
+}
 
   tratarAncoraConteudo(conteudo) {
     const template = this.renderer.createElement('template');

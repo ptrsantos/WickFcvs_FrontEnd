@@ -39,6 +39,7 @@ export class AuthPageComponent {
   ) { }
 
   public ngOnInit(): void {
+    this.authService.sessionStorageSalvarUltimaUrl('/wiki')
     this.dexieService.db.delete().then(
       response => {
         this.socialAuthService.authState.subscribe((user) => {
@@ -115,7 +116,6 @@ export class AuthPageComponent {
   }
 
   processarSucesso(response) {
-    debugger
     this.authService.sessionStorageSalvarDadosUsuario(response.data.loginResponsavel)
     this.erros = [];
     let toastr = this.toastrService.success("Operação realizado com sucesso.", "Parabéns: ")
@@ -143,12 +143,9 @@ export class AuthPageComponent {
 
 
   processarFalha(fails: any) {
-    if(fails.status){
-      this.toastrService.error(fails.message.toString(), "Ocorreu um erro:")
-    }else{
       this.erros = fails.error.errors;
-      this.toastrService.error(this.erros.toString(), "Ocorreu um erro:")
-    }
+      this.toastrService.error(
+        (this.erros != undefined && this.erros != null && this.erros?.length > 0 ) ? this.erros.toString() : "Erro desconhecido", "Ocorreu um erro:")
   }
 
 }

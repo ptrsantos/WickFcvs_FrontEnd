@@ -82,6 +82,7 @@ export class DashboardService extends SessionStorageService  {
   }
 
   retornaArtigoEdicaoHistorico(edicaoId): Observable<any>{
+    debugger
     let params = new HttpParams();
     params = params.set('edicaoId', edicaoId);
     return this.http.get<any>(`${environment.ApiControleUrl}/edicoes/RetornaArtigoEdicaoHistorico?${params}`,  { headers: headers})

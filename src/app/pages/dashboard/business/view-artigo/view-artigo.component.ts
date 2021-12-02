@@ -78,13 +78,9 @@ export class ViewArtigoComponent implements OnInit, AfterViewInit {
 
 
   processarFalha(fails: any) {
-    if(fails.status){
-      this.toastrService.error(fails.message.toString(), "Ocorreu um erro:")
-    }else{
-      this.erros = fails.error.errors;
-      this.toastrService.error(this.erros.toString(), "Ocorreu um erro:")
-    }
-  }
+    this.erros = fails.error.errors;
+    this.toastrService.error(this.erros.toString(), "Ocorreu um erro:")
+}
 
   incializarConteudo() {
     this.tituloArtigo = this.artigoEdicao.artigoTitulo

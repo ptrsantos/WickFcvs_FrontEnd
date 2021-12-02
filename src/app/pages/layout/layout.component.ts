@@ -182,7 +182,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
     // }
     // this.renderer.removeChild(this.host.nativeElement, this.children.first.nativeElement);
     // //this.renderer.removeChild(this.host.nativeElement, this.children.first.nativeElement);
-    // debugger
+
     // console.log(this.host)
     // this.renderer.appendChild(this.host.nativeElement, this.children.first.nativeElement)
   }
