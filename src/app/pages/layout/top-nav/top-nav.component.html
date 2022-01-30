@@ -15,12 +15,14 @@
   <span class="nav-spacer"></span>
 
 
-  <h4 *ngIf="perfil == 'Administrador'" class="hidden-sm">Área Administrativa</h4>
+  <h4 *ngIf="perfil == 'Gestor'" class="hidden-sm">Área do Gestor</h4>
+  <h4 *ngIf="perfil == 'Administrador'" class="hidden-sm">Área do Administrador</h4>
 
   <span class="nav-spacer"></span>
 
   <button class="hidden-sm" mat-icon-button >
     <mat-icon style="font-size: 2.4em;" [matTooltip]="nomeExibicao">{{iconeUsuario}}</mat-icon>
+    <!-- <mat-icon [matTooltip]="nomeExibicao">{{iconeUsuario}}</mat-icon> -->
   </button>
 
   <button mat-icon-button (click)="onLoggedout()">

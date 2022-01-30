@@ -44,6 +44,8 @@
     "ng2-charts": "^2.4.3",
     "ngx-bootstrap": "^7.1.0",
     "ngx-device-detector": "^2.1.1",
+    "ngx-loading": "^8.0.0",
+    "ngx-loading-x": "^1.0.3",
     "ngx-modialog": "^5.0.1",
     "ngx-spinner": "^7.2.0",
     "ngx-toastr": "^10.2.0",

@@ -44,6 +44,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
   artigoEdicaoHome: string;
 
   administrador: boolean = false;
+  gestor: boolean = false;
 
   @ViewChildren('el', { read: ElementRef }) children: QueryList<ElementRef>;
   @ViewChild(MenuListItemComponent) matListItem: ElementRef;
@@ -78,12 +79,14 @@ export class LayoutComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.artigoEdicaoHome = this.authService.sessionStorageObterArtigoEdicaoHome();
-
     let usuario = this.authService.sessionStorageObterUsuario();
     let claim = usuario.claims.find((item) => item.type === 'perfil');
     if (claim !== undefined) {
       if (claim.value == 'Administrador') {
         this.administrador = true;
+      }else
+      if(claim.value == 'Gestor'){
+        this.gestor = true
       }
     }
     this.preencherNavTemas();
@@ -148,7 +151,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
     }
     this.navItems.push(primeiroItem);
 
-    if (this.administrador == true) {
+    if (this.administrador == true || this.gestor == true) {
       let segundoItemAdm = new NavItem();
       segundoItemAdm.displayName = 'Administrador';
       segundoItemAdm.iconName = 'bookmark';
@@ -189,12 +192,15 @@ export class LayoutComponent implements OnInit, OnDestroy {
 
   retornaListaSubItensAdministrativo() {
     let listaSubItens = [];
-    let subItem1 = new NavItem();
-    subItem1.displayName = 'Administrar acessos';
-    subItem1.iconName = 'list';
-    // subItem1.id = "";
-    subItem1.route = '/wiki/administrar-acessos';
-    listaSubItens.push(subItem1);
+    debugger
+    if(this.administrador == true){
+      let subItem1 = new NavItem();
+      subItem1.displayName = 'Administrar acessos';
+      subItem1.iconName = 'list';
+      // subItem1.id = "";
+      subItem1.route = '/wiki/administrar-acessos';
+      listaSubItens.push(subItem1);
+    }
     let subItem2 = new NavItem();
     subItem2.displayName = 'Administrar conteúdo';
     subItem2.iconName = 'list';

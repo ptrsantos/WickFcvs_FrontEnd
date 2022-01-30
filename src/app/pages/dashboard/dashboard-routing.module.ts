@@ -15,7 +15,10 @@ import { AdministrarEstatisticaComponent } from './business/administrativo/admin
 import { EdicaoVinculoComponent } from './business/administrativo/administrar-conteudo/edicao-vinculo/edicao-vinculo.component';
 import { PageNotFoundComponent } from 'src/app/shared/page-not-found/page-not-found.component';
 import { ViewHistoricoDetalheEdicaoComponent } from './business/view-historico-detalhe-edicao/view-historico-detalhe-edicao.component';
-import { AuthAdminGuard } from 'src/app/shared/core/auth-adimn-guard';
+import { AuthGestorGuard } from 'src/app/shared/core/auth-gestor-guard';
+import { AuthAdminGuard } from 'src/app/shared/core/auth-admin-guard';
+
+
 
 
 const routes: Routes = [
@@ -74,19 +77,19 @@ const routes: Routes = [
       {
         path: 'administrar-conteudo',
         pathMatch: 'full',
-        canActivate: [AuthAdminGuard],
+        canActivate: [AuthGestorGuard],
         component: AdministrarConteudoComponent
       },
       {
         path: 'administrar-estatistica',
         pathMatch: 'full',
-        canActivate: [AuthAdminGuard],
+        canActivate: [AuthGestorGuard],
         component: AdministrarEstatisticaComponent
       },
       {
         path: 'editar-vinculo/:id',
         pathMatch: 'full',
-        canActivate: [AuthAdminGuard],
+        canActivate: [AuthGestorGuard],
         component: EdicaoVinculoComponent
       },
 

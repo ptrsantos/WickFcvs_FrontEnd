@@ -1,3 +1,8 @@
+<ngx-loading-x
+[show]="clicouPaginacao"
+spinnerType = "three-strings"
+></ngx-loading-x>
+
 <div id="container" fxFlex="97" fxLayout="column" fxLayoutAlign="center">
 
 
@@ -60,7 +65,7 @@
           matTooltip="Visualizar Edições"
           aria-label="Visualizar Edições"
           >
-          <mat-icon>remove_red_eye</mat-icon>
+          <mat-icon *ngIf="!clicouPaginacao">remove_red_eye</mat-icon>
         </button>
         </div>
       </td>

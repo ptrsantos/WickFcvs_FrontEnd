@@ -61,10 +61,12 @@ export class ViewHistoricoComponent implements OnInit {
 
   exibirSnackBar: boolean = false;
 
+  clicouPaginacao = false;
+
   constructor(
     private changeDetectorRefs: ChangeDetectorRef,
     private dashboardService: DashboardService,
-    private spinnerService: NgxSpinnerService,
+    // private spinnerService: NgxSpinnerService,
     private toastrService: ToastrService,
     private route: Router,
     media: MediaObserver,
@@ -90,7 +92,7 @@ export class ViewHistoricoComponent implements OnInit {
     this.tamanhoDaLista = 0;
     this.incializarTebela();
     this.obterDadosIniciais();
-    this.spinnerService.hide();
+    // this.spinnerService.hide();
   }
 
   obterDadosIniciais() {
@@ -105,12 +107,10 @@ export class ViewHistoricoComponent implements OnInit {
         this.incializarTebela();
         this.refresh();
         this.ocultarTabela = false;
-        this.spinnerService.hide();
       });
   }
 
   obterProximosDados(filtro: string) {
-    //this.spinnerService.show();
     let filtroBusca = filtro == undefined ? '' : filtro == null ? '' : filtro;
     this.dashboardService
       .ListarArtigosEdicoesHistoricoComFiltro(
@@ -125,8 +125,8 @@ export class ViewHistoricoComponent implements OnInit {
         this.listaTemasArtigos.length = response.data.quantidadeItens;
         let retorno = response.data.listaArtigosEdicoes;
         this.listaTemasArtigos.splice(indice, retorno.length, ...retorno);
+        this.clicouPaginacao = false;
         this.refresh();
-        //this.spinnerService.hide();
       });
   }
 
@@ -154,23 +154,18 @@ export class ViewHistoricoComponent implements OnInit {
   }
 
   pageChanged(event) {
-    this.spinnerService.show();
+    this.clicouPaginacao = true
     let filtro = this.filtro.nativeElement[0].value;
     let pagina = event.pageIndex;
     let tamanho = event.pageSize;
     let paginaAnterior = event.previousPageIndex;
-    //let tamanhoAnterior = tamanho * pagina;
-
     this.paginaAtual = pagina - paginaAnterior;
-
     if (pagina > paginaAnterior) {
       this.paginaAtual = pagina + 1;
     } else {
       this.paginaAtual = pagina + 1;
     }
-
     this.tamanhoDaPaginaAtual = event.pageSize;
-
     this.obterProximosDados(filtro);
   }
 
@@ -189,7 +184,6 @@ export class ViewHistoricoComponent implements OnInit {
   }
 
   acaoVisualizarModal(dado) {
-    this.spinnerService.show();
     this.retornaArtigoEdicaoParaVisualizacao(dado.edicaoId);
   }
 
@@ -217,11 +211,7 @@ export class ViewHistoricoComponent implements OnInit {
 
   processarSucesso(response) {
     this.erros = [];
-    let artigoEdicao: ArtigoEdicaoDto = Object.assign(
-      {},
-      new ArtigoEdicaoDto(),
-      response.data.artigoEdicao
-    );
+    let artigoEdicao: ArtigoEdicaoDto = Object.assign({}, new ArtigoEdicaoDto(), response.data.artigoEdicao);
     this.modalHistorico.openDialog(artigoEdicao);
   }
 

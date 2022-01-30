@@ -19,13 +19,13 @@ export class TopNavComponent implements OnInit {
   caminho: string;
   contador: number = 0;
 
+
   constructor(private readonly router: Router,
               private authService: AuthService,
               public navService: NavService,
               private snackBar: MatSnackBar) {}
 
   ngOnInit() {
-    debugger
     console.log(++this.contador)
     let url = this.authService.sessionStorageRetornaUltimaUrl();
      //(this.authService.sessionStorageObterUsuario());
@@ -75,8 +75,8 @@ export class TopNavComponent implements OnInit {
     this.authService.sessionStorageSalvarUltimaUrl(this.router.url);
     this.snackBar.open(`Seja bem vindo ${this.nomeExibicao}`, "", {
       duration: 2000,
-      verticalPosition: 'top',
       horizontalPosition: 'right',
+      verticalPosition: 'top',
       panelClass: ['blue-snackbar']
     });
   }

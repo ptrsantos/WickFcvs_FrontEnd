@@ -27,7 +27,6 @@ export class AdministrarConteudoComponent implements OnInit {
               private router: Router*/) { }
 
   ngOnInit(): void {
-    debugger
     this.spinnerService.hide()
   }
 

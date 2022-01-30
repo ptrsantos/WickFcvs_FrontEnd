@@ -5,7 +5,7 @@
 
     <div fxLayout="row" fxLayoutAlign="center none" id="header-table">
       <h2 class="mat-h2" style="margin-top: 1%;">
-        <strong >Gerenciar acessos e perfis</strong>
+        <strong >Administrar acessos e perfis</strong>
       </h2>
     </div>
 
@@ -37,7 +37,7 @@
         <ng-container matColumnDef="claimValue">
           <th mat-header-cell *matHeaderCellDef>Perfil</th>
           <td mat-cell *matCellDef="let element"
-          [class]="element.claimValue == 'Administrador' ? 'Administrador' : 'Usuario'"> {{element.claimValue == 'Administrador' ? element.claimValue : 'Usuário'}} </td>
+          [class]="element.claimValue == 'Administrador' ? element.claimValue : element.claimValue == 'Gestor' ? 'Gestor' : 'Usuario'"> {{(element.claimValue == 'Administrador') ? element.claimValue : element.claimValue == 'Gestor' ? element.claimValue : 'Editor'}} </td>
         </ng-container>
 
         <ng-container matColumnDef="bloqueado">

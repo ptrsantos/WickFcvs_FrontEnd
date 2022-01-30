@@ -102,7 +102,6 @@ export class AdministrarAcessoComponent implements OnInit {
     this.dashboardService.bloqueio(usuario).subscribe(
       sucesso => this.processarSucesso(sucesso),
       falha => {
-        debugger
         this.processarFalha(falha)
       }
     );
@@ -139,7 +138,6 @@ export class AdministrarAcessoComponent implements OnInit {
   }
 
   processarFalha(fails: any) {
-    debugger
     if(fails.error.errors == undefined || fails.error.errors.length == 0){
       this.toastrService.error(fails.message.toString(), "Ocorreu um erro:")
     }else{

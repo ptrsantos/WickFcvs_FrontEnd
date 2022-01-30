@@ -18,8 +18,8 @@ import { environment } from 'src/environments/environment';
 import { MaterialModule } from './utils/angular-material/material.module';
 import { NavService } from './pages/layout/nav.service';
 import { AuthGuard } from './shared/core/auth.guard';
-import { AuthAdminGuard } from './shared/core/auth-adimn-guard';
-
+import { AuthAdminGuard } from './shared/core/auth-admin-guard';
+import { AuthGestorGuard } from './shared/core/auth-gestor-guard';
 
 @NgModule({
   declarations: [
@@ -55,6 +55,7 @@ import { AuthAdminGuard } from './shared/core/auth-adimn-guard';
     EncryptionDescryptionService,
     NavService,
     AuthGuard,
+    AuthGestorGuard,
     AuthAdminGuard,
     DexieService,
     {

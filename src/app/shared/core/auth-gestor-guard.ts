@@ -17,7 +17,7 @@ import { T } from '@angular/cdk/keycodes';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthAdminGuard implements CanActivate{
+export class AuthGestorGuard implements CanActivate{
 
   administrador
 
@@ -27,16 +27,17 @@ export class AuthAdminGuard implements CanActivate{
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
-    return this.verificaAdministrador()
+    return this.verificarGestor()
   }
 
 
-  verificaAdministrador(){
+  verificarGestor(){
     debugger
     let usuario = this.authService.sessionStorageObterUsuario();
     let claim = usuario.claims.find((item) => item.type === 'perfil');
     if (claim !== undefined) {
-      if (claim.value == 'Administrador') {
+      debugger
+      if (claim.value == 'Administrador' || claim.value == 'Gestor') {
         return true;
       }else{
         debugger

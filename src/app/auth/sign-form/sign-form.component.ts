@@ -22,7 +22,7 @@ export class SignFormComponent implements OnInit {
   }
 
   public cadastrarUsuario(): void {
-
+    debugger
     if (this.formSign.valid) {
         this.usuario = Object.assign({}, this.usuario, this.formSign.value)
         this.sendSignForm.emit(this.usuario)

@@ -41,6 +41,21 @@ import { TabelaListaTemasEdicaoComponent } from './business/administrativo/admin
 import { MatDialogModule } from '@angular/material/dialog';
 import { ViewHistoricoDetalheEdicaoComponent } from './business/view-historico-detalhe-edicao/view-historico-detalhe-edicao.component';
 
+import { NgxLoadingXConfig, POSITION, SPINNER, NgxLoadingXModule } from 'ngx-loading-x';
+
+const ngxLoadingXConfig: NgxLoadingXConfig = {
+  show: false,
+  bgBlur: 2,
+  bgColor: 'rgba(40, 40, 40, 0.5)',
+  bgOpacity: 5,
+  bgLogoUrl: '',
+  bgLogoUrlPosition: POSITION.topLeft,
+  bgLogoUrlSize: 100,
+  spinnerType: SPINNER.threeStrings,
+  spinnerSize: 120,
+  spinnerColor: '#dd0031',
+  spinnerPosition: POSITION.centerCenter,
+}
 
 @NgModule({
   imports: [
@@ -52,7 +67,8 @@ import { ViewHistoricoDetalheEdicaoComponent } from './business/view-historico-d
     FormsModule,
     ReactiveFormsModule,
     NgxSpinnerModule,
-    ChartsModule
+    ChartsModule,
+    NgxLoadingXModule.forRoot(ngxLoadingXConfig),
     ],
   declarations: [
     DashboardHomeComponent,
