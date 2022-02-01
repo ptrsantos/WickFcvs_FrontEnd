@@ -32,15 +32,12 @@ export class AuthGestorGuard implements CanActivate{
 
 
   verificarGestor(){
-    debugger
     let usuario = this.authService.sessionStorageObterUsuario();
     let claim = usuario.claims.find((item) => item.type === 'perfil');
     if (claim !== undefined) {
-      debugger
-      if (claim.value == 'Administrador' || claim.value == 'Gestor') {
+        if (claim.value == 'Administrador' || claim.value == 'Gestor') {
         return true;
       }else{
-        debugger
         this.router.navigate(['/acesso-negado']);
         this.spinnerService.hide();
         return false;

@@ -30,6 +30,7 @@ import { Edicao } from '../model/entities/edicao';
 import { EdicaoArtigoDto } from '../model/dtos/edicaoArtigoDto';
 import { ArtigoDto } from '../model/dtos/artigoDto';
 import { debug } from 'console';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 ///import { NavItem } from './nav-item';
 
@@ -64,7 +65,8 @@ export class ViewIncluirArtigoComponent implements OnInit, OnDestroy {
     //private encrypt: EncryptionDescryptionService,
     private route: Router,
     private dexieService: DexieService,
-    private sessionStorageService: SessionStorageService
+    private sessionStorageService: SessionStorageService,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -140,6 +142,26 @@ export class ViewIncluirArtigoComponent implements OnInit, OnDestroy {
   }
 
   preencherTema(artigo: ArtigoDto) {
+
+    let mensagem = "O(s) campo(s): ";
+    if(this.temaViewChild.temaFormControl.value == null ||this.temaViewChild.temaFormControl?.value.length == 0
+      || artigo.edicaoArtigo.conteudo == null || artigo.edicaoArtigo?.conteudo.length == 0
+      || artigo.edicaoArtigo.titulo == null || artigo.edicaoArtigo.titulo.length == 0){
+
+        if(this.temaViewChild.temaFormControl.value == null || this.temaViewChild.temaFormControl.value.length == 0){
+          mensagem += "<br><b>Tema</b>"
+        }
+        if(artigo.edicaoArtigo.titulo == null || artigo.edicaoArtigo?.titulo.length == 0){
+          mensagem += "<br><b>Artigo</b>"
+        }
+        if(artigo.edicaoArtigo.conteudo == null || artigo.edicaoArtigo.conteudo.length == 0){
+          mensagem += "<br><b>Editor</b>"
+        }
+        mensagem += "<br>Deve(m) ser preenchido(s)"
+        this.abrirModalErro(mensagem)
+        return
+      }
+
     let inclusaoModel = new InclusaoViewModel();
     let tema: TemaInclusaoDto = new TemaInclusaoDto();
     let edicao: Edicao = new Edicao();
@@ -148,11 +170,46 @@ export class ViewIncluirArtigoComponent implements OnInit, OnDestroy {
     tema.edicao = edicao;
     tema.artigo = artigo;
     inclusaoModel.temaInclusao = tema;
-    // inclusao.artigo = artigo;
+
     this.salvarEdicao(inclusaoModel);
   }
 
   ngOnDestroy(): void {
     this.spinnerService.hide();
   }
+
+  abrirModalErro(mensagem){
+    this.dialog.open(ModalErroIncluirArtigoDialog,
+        {
+          data: {mensagem: mensagem}
+        }
+      )
+  }
+
+  exibirMensagemDeErro(mensagem){
+    alert()
+  }
+}
+
+
+@Component({
+  selector: 'modal-erro-incluir-artigo-dialog',
+  templateUrl: 'modal-erro-incluir-artigo.component.html',
+})
+
+export class ModalErroIncluirArtigoDialog {
+
+  constructor(
+    public dialogRef: MatDialogRef<ModalErroIncluirArtigoDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+  ) {}
+
+  ngOnInit(): void {
+    //console.log(this.data)
+  }
+
+  fechar(){
+    this.dialogRef.close();
+  }
+
 }

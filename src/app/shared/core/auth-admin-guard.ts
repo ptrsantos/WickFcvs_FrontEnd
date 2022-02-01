@@ -32,15 +32,12 @@ export class AuthAdminGuard implements CanActivate{
 
 
   verificaAdministrador(){
-    debugger
     let usuario = this.authService.sessionStorageObterUsuario();
     let claim = usuario.claims.find((item) => item.type === 'perfil');
     if (claim !== undefined) {
       if (claim.value == 'Administrador') {
-        debugger
         return true;
       }else{
-        debugger
         this.router.navigate(['/acesso-negado']);
         this.spinnerService.hide();
         return false;

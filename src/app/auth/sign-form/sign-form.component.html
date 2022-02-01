@@ -1,5 +1,5 @@
 <form class="sign-form" #myForm="ngForm" [formGroup]="formSign" (ngSubmit)="cadastrarUsuario()">
-  
+
   <div class="text-center">
     <h2 class="app-name">Cadastre-se</h2>
   </div>
@@ -7,13 +7,13 @@
   <div fxLayout="row">
     <div fxFlexFill>
       <mat-form-field class="w-100">
-        <input matInput placeholder="Email" formControlName="email">
+        <input matInput [placeholder]="emailPlaceHolder" formControlName="email" (blur)="onBlurEmail()">
       </mat-form-field>
       <mat-form-field class="w-100">
-        <input matInput type="password" placeholder="Senha" formControlName="password" >
+        <input matInput type="password" [placeholder]="senhaPlaceHolder" formControlName="password" (blur)="onBlurSenha()">
       </mat-form-field>
       <mat-form-field class="w-100">
-        <input matInput type="password" placeholder="Confirmar senha" formControlName="confirmPassword" >
+        <input matInput type="password" [placeholder]="confirmaSenhaPlaceHolder" formControlName="confirmPassword" (blur)="onBlurConfirmaSenha()">
       </mat-form-field>
     </div>
   </div>
@@ -22,8 +22,8 @@
 
   <div fxLayout="row">
     <div fxFlexFill>
-      <button type="submit" mat-raised-button color="primary" class="w-100">Confirmar</button>
+      <button type="submit" mat-raised-button color="primary" class="w-100" [disabled]="buttonDisabled">Confirmar</button>
     </div>
   </div>
-  
+
 </form>

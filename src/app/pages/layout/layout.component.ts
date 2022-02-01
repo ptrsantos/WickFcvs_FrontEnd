@@ -192,7 +192,6 @@ export class LayoutComponent implements OnInit, OnDestroy {
 
   retornaListaSubItensAdministrativo() {
     let listaSubItens = [];
-    debugger
     if(this.administrador == true){
       let subItem1 = new NavItem();
       subItem1.displayName = 'Administrar acessos';

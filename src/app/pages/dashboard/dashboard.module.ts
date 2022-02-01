@@ -12,7 +12,7 @@ import { CkeditorComponent } from './business/ckeditor/ckeditor.component';
 import { TemaComponent } from './business/tema/tema.component';
 import { ViewArtigoComponent } from './business/view-artigo/view-artigo.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { ViewIncluirArtigoComponent } from './business/view-incluir-artigo/view-incluir-artigo.component';
+import { ModalErroIncluirArtigoDialog, ViewIncluirArtigoComponent } from './business/view-incluir-artigo/view-incluir-artigo.component';
 import { ViewHistoricoComponent } from './business/view-historico/view-historico.component';
 import { ModalHistoricoComponent, ModalHistoricoComponentDialog } from './business/modal-historico/modal-historico.component';
 import { ViewHomeComponent } from './business/view-home/view-home.component';
@@ -100,7 +100,8 @@ const ngxLoadingXConfig: NgxLoadingXConfig = {
     AlertaExclusaoDialog,
     ExclusaoPaginaIncialNegadaDialog,
     ExclusaoNegadaDialog,
-    ViewHistoricoDetalheEdicaoComponent
+    ViewHistoricoDetalheEdicaoComponent,
+    ModalErroIncluirArtigoDialog
   ],
   exports: [
     DashboardHomeComponent,
@@ -128,7 +129,8 @@ const ngxLoadingXConfig: NgxLoadingXConfig = {
     EdicaoTemaModalDialogComponent,
     AlertaExclusaoDialog,
     ExclusaoPaginaIncialNegadaDialog,
-    ExclusaoNegadaDialog
+    ExclusaoNegadaDialog,
+    ModalErroIncluirArtigoDialog
   ]
   // schemas: [
   //   CUSTOM_ELEMENTS_SCHEMA

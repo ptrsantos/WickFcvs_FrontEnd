@@ -37,7 +37,6 @@ export class TokenInterceptorService implements HttpInterceptor {
               this.router.navigate(['/usuario-sem-autenticacao'])
             }
             if(error.status === 403){
-              debugger
               this.spinnerService.hide();
               this.router.navigate(['/acesso-negado'])
             }
