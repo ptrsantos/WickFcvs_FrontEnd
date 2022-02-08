@@ -6,10 +6,9 @@ import { DataChartService } from '../../../../services/data-chart.service';
 @Component({
   selector: 'app-grafico-linhas',
   templateUrl: './grafico-linhas.component.html',
-  styleUrls: ['./grafico-linhas.component.scss']
+  styleUrls: ['./grafico-linhas.component.scss'],
 })
 export class GraficoLinhasComponent implements OnInit {
-
   chart: Chart;
   name = 'Angular 5 chartjs';
   @ViewChild('canvas') canvas: ElementRef;
@@ -17,86 +16,99 @@ export class GraficoLinhasComponent implements OnInit {
   lineChartData: Array<any> = [];
   lineChartLabels: Array<any> = [];
 
-  constructor(private dataChartService: DataChartService) { }
+  constructor(private dataChartService: DataChartService) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
 
-  }
+  ngAfterViewInit() {}
 
-  ngAfterViewInit() {
-
-  }
-
-
-  mapearDadosEstatisticos(listaEstatiscaUsuario: MesTotalDto[], listaEstatiscaArtigo: MesTotalDto[], listaEstatiscaEdicao: MesTotalDto[]) {
+  mapearDadosEstatisticos(
+    listaEstatiscaUsuario: MesTotalDto[],
+    listaEstatiscaArtigo: MesTotalDto[],
+    listaEstatiscaEdicao: MesTotalDto[]
+  ) {
+    let listaEstatiscaUsuarioOrdenada = listaEstatiscaUsuario.sort((a, b) =>
+      a.dataRegistro < b.dataRegistro ? -1  : a.dataRegistro > b.dataRegistro ? 1  : 0
+    );
 
     let totalUsuarios = {
-      data: listaEstatiscaUsuario.map((item) => item.total),
+      data: listaEstatiscaUsuarioOrdenada.map((item) => item.total),
       label: 'usuarios',
-      borderColor: "#008000",
-      backgroundColor: "#d3f8d3",
+      borderColor: '#008000',
+      backgroundColor: '#d3f8d3',
     };
     this.lineChartData.push(totalUsuarios);
 
+    let listaEstatiscaArtigoOrdenada = listaEstatiscaArtigo.sort((a, b) =>
+      a.dataRegistro < b.dataRegistro ? -1  : a.dataRegistro > b.dataRegistro ? 1  : 0
+    );
+
     let totalArtigos = {
-      data: listaEstatiscaArtigo.map((item) => item.total),
+      data: listaEstatiscaArtigoOrdenada.map((item) => item.total),
       label: 'artigos',
-      borderColor: "#0000ff",
-      backgroundColor: "#d8ecf3",
+      borderColor: '#0000ff',
+      backgroundColor: '#d8ecf3',
     };
     this.lineChartData.push(totalArtigos);
 
-    let totalEdicoes = {
-      data: listaEstatiscaEdicao.map((item) => item.total),
-      label: 'edições',
-      borderColor: "#FF0000",
-      backgroundColor: "#ffd4cc",
+    let listaEstatiscaEdicaoOrdenada = listaEstatiscaEdicao.sort((a, b) =>
+      a.dataRegistro < b.dataRegistro ? -1  : a.dataRegistro > b.dataRegistro ? 1  : 0
+    );
 
+    let totalEdicoes = {
+      data: listaEstatiscaEdicaoOrdenada.map((item) => item.total),
+      label: 'edições',
+      borderColor: '#FF0000',
+      backgroundColor: '#ffd4cc',
     };
 
     this.lineChartData.push(totalEdicoes);
 
-    let arraylabel = listaEstatiscaUsuario.map((item) => item.mesLiteral);
+    let arraylabel = listaEstatiscaUsuarioOrdenada.map(
+      (item) => item.mesLiteral + '/' + item.dataRegistro.toString().substring(0, 4)
+    );
 
     this.lineChartLabels = arraylabel;
 
-    (this.canvas)
-    let ctx = this.canvas.nativeElement
+    this.canvas;
+    let ctx = this.canvas.nativeElement;
 
     this.chart = new Chart(ctx, {
       type: 'line',
       data: {
         labels: this.lineChartLabels,
-        datasets: this.lineChartData
+        datasets: this.lineChartData,
       },
       options: {
         title: {
           display: false,
-          text: 'Color test'
+          text: 'Color test',
         },
         legend: {
           position: 'top',
           display: true,
           fullWidth: true,
           labels: {
-            fontSize: 11
-          }
+            fontSize: 11,
+          },
         },
         scales: {
-          xAxes: [{
-            display: true
-          }],
-          yAxes: [{
-            display: true
-          }]
+          xAxes: [
+            {
+              display: true,
+            },
+          ],
+          yAxes: [
+            {
+              display: true,
+            },
+          ],
         },
-
-      }
+      },
     });
-
-
   }
 
-
-
+  compare(a, b) {
+    return a.dataRegistro < b.dataRegistro;
+  }
 }

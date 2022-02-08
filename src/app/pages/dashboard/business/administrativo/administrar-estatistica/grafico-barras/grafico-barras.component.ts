@@ -24,34 +24,35 @@ export class GraficoBarrasComponent implements OnInit {
 
   mapearDadosEstatisticos(listaEstatiscaUsuario: MesTotalDto[], listaEstatiscaArtigo: MesTotalDto[], listaEstatiscaEdicao: MesTotalDto[]) {
 
+    let listaEstatiscaUsuarioOrdenada = listaEstatiscaUsuario.sort((a, b) => a.dataRegistro < b.dataRegistro ? -1 : a.dataRegistro > b.dataRegistro ? 1: 0)
     let totalUsuarios = {
-      data: listaEstatiscaUsuario.map((item) => item.total),
+      data: listaEstatiscaUsuarioOrdenada.map((item) => item.total),
       label: 'usuarios',
-      borderColor: "#FF0000",
-      backgroundColor: "#FF0000",
+      borderColor: "#008000",
+      backgroundColor: "#008000",
     };
     this.barChartData.push(totalUsuarios);
 
+    let listaEstatiscaArtigoOrdenada = listaEstatiscaArtigo.sort((a, b) => a.dataRegistro < b.dataRegistro ? -1 : a.dataRegistro > b.dataRegistro ? 1: 0)
     let totalArtigos = {
-      data: listaEstatiscaArtigo.map((item) => item.total),
+      data: listaEstatiscaArtigoOrdenada.map((item) => item.total),
       label: 'artigos',
       borderColor: "#0000ff",
       backgroundColor: "#0000ff",
     };
     this.barChartData.push(totalArtigos);
 
+    let listaEstatiscaEdicaoOrdenada = listaEstatiscaEdicao.sort((a, b) => a.dataRegistro < b.dataRegistro ? -1 : a.dataRegistro > b.dataRegistro ? 1: 0)
     let totalEdicoes = {
-      data: listaEstatiscaEdicao.map((item) => item.total),
+      data: listaEstatiscaEdicaoOrdenada.map((item) => item.total),
       label: 'edições',
-      borderColor: "#008000",
-      backgroundColor: "#008000",
+      borderColor: "#FF0000",
+      backgroundColor: "#FF0000",
     };
 
     this.barChartData.push(totalEdicoes);
 
-    // this.lineChartData.shift()
-
-    let arraylabel = listaEstatiscaUsuario.map((item) => item.mesLiteral);
+    let arraylabel = listaEstatiscaUsuarioOrdenada.map((item) => item.mesLiteral + "/" + item.dataRegistro.toString().substring(0, 4));
 
     this.barChartLabels = arraylabel;
 

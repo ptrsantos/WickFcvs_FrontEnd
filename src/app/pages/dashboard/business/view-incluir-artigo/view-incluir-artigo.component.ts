@@ -52,7 +52,6 @@ export class ViewIncluirArtigoComponent implements OnInit, OnDestroy {
   panelOpenState = false;
 
   navItems: NavItem[] = [];
-  //listaTemas: Tema[] = [];
   listaTemas: TemaDto[] = [];
 
   constructor(
@@ -62,7 +61,6 @@ export class ViewIncluirArtigoComponent implements OnInit, OnDestroy {
     private router: Router,
     private toastrService: ToastrService,
     private spinnerService: NgxSpinnerService,
-    //private encrypt: EncryptionDescryptionService,
     private route: Router,
     private dexieService: DexieService,
     private sessionStorageService: SessionStorageService,
@@ -186,9 +184,6 @@ export class ViewIncluirArtigoComponent implements OnInit, OnDestroy {
       )
   }
 
-  exibirMensagemDeErro(mensagem){
-    alert()
-  }
 }
 
 

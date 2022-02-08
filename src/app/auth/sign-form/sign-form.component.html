@@ -13,7 +13,7 @@
         <input matInput type="password" [placeholder]="senhaPlaceHolder" formControlName="password" (blur)="onBlurSenha()">
       </mat-form-field>
       <mat-form-field class="w-100">
-        <input matInput type="password" [placeholder]="confirmaSenhaPlaceHolder" formControlName="confirmPassword" (blur)="onBlurConfirmaSenha()">
+        <input matInput type="password" [placeholder]="confirmaSenhaPlaceHolder" formControlName="confirmPassword" (blur)="onBlurConfirmaSenha()"  (change)="desbloquearBotao()">
       </mat-form-field>
     </div>
   </div>
