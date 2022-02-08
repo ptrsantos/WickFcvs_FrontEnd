@@ -10,7 +10,7 @@
           <input matInput [placeholder]="emailPlaceHolder" formControlName="email" (blur)="onBlurEmail()">
         </mat-form-field>
           <mat-form-field class="w-100">
-          <input matInput type="password" [placeholder]="senhaPlaceHolder" formControlName="password" (blur)="onBlurSenha()"  (change)="desbloquearBotao()">
+          <input matInput type="password" [placeholder]="senhaPlaceHolder" formControlName="password" (blur)="onBlurSenha()"  (ngModelChange)="desbloquearBotao()">
         </mat-form-field>
       </div>
     </div>

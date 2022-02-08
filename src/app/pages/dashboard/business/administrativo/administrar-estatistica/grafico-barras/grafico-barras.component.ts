@@ -25,6 +25,7 @@ export class GraficoBarrasComponent implements OnInit {
   mapearDadosEstatisticos(listaEstatiscaUsuario: MesTotalDto[], listaEstatiscaArtigo: MesTotalDto[], listaEstatiscaEdicao: MesTotalDto[]) {
 
     let listaEstatiscaUsuarioOrdenada = listaEstatiscaUsuario.sort((a, b) => a.dataRegistro < b.dataRegistro ? -1 : a.dataRegistro > b.dataRegistro ? 1: 0)
+
     let totalUsuarios = {
       data: listaEstatiscaUsuarioOrdenada.map((item) => item.total),
       label: 'usuarios',
@@ -34,6 +35,7 @@ export class GraficoBarrasComponent implements OnInit {
     this.barChartData.push(totalUsuarios);
 
     let listaEstatiscaArtigoOrdenada = listaEstatiscaArtigo.sort((a, b) => a.dataRegistro < b.dataRegistro ? -1 : a.dataRegistro > b.dataRegistro ? 1: 0)
+    console.log(listaEstatiscaArtigoOrdenada)
     let totalArtigos = {
       data: listaEstatiscaArtigoOrdenada.map((item) => item.total),
       label: 'artigos',

@@ -42,6 +42,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ViewHistoricoDetalheEdicaoComponent } from './business/view-historico-detalhe-edicao/view-historico-detalhe-edicao.component';
 
 import { NgxLoadingXConfig, POSITION, SPINNER, NgxLoadingXModule } from 'ngx-loading-x';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 const ngxLoadingXConfig: NgxLoadingXConfig = {
   show: false,
@@ -69,6 +70,7 @@ const ngxLoadingXConfig: NgxLoadingXConfig = {
     NgxSpinnerModule,
     ChartsModule,
     NgxLoadingXModule.forRoot(ngxLoadingXConfig),
+    SharedModule
     ],
   declarations: [
     DashboardHomeComponent,

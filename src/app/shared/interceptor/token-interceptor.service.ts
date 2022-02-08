@@ -5,6 +5,7 @@ import { retry, catchError, finalize } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { AuthService } from '../../auth/auth.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { SpinnerService } from '../core/spinner/spinner.service';
 
 
 @Injectable({
@@ -12,12 +13,13 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class TokenInterceptorService implements HttpInterceptor {
   private authService: AuthService;
-  constructor(private injector: Injector, private router: Router, private spinnerService: NgxSpinnerService) {
+  constructor(private injector: Injector, private router: Router, private spinnerService: SpinnerService) {
     // alert("interceptor acionado");
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    this.spinnerService.show()
+    debugger
+    this.spinnerService.requestStarted()
     this.authService = this.injector.get(AuthService)
     if (this.authService.sessionStorageObterTokenUsuario() && !req.headers.has('nao_incluir_token')){
       req = this.clonarHeaderInserindoToken(req);
@@ -33,15 +35,15 @@ export class TokenInterceptorService implements HttpInterceptor {
 
             if(error.status === 401){
               this.authService.sessionStorageLimparDadosLocaisUsuario();
-              this.spinnerService.hide();
+              this.spinnerService.requestEnded();
               this.router.navigate(['/usuario-sem-autenticacao'])
             }
             if(error.status === 403){
-              this.spinnerService.hide();
+              this.spinnerService.requestEnded();
               this.router.navigate(['/acesso-negado'])
             }
             if(error.status === 404){
-              this.spinnerService.hide();
+              this.spinnerService.requestEnded();
               this.router.navigate(['/page-not-found'])
             }
 
@@ -53,8 +55,7 @@ export class TokenInterceptorService implements HttpInterceptor {
 
         finalize(
           () => {
-
-            this.spinnerService.hide()
+            this.spinnerService.resetSpinner()
           }
         ),
         // finally(

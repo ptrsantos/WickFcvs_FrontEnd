@@ -1,7 +1,6 @@
 import { ArtigoEdicaoDto } from '../model/dtos/artigoEdicaoDto';
 import { Artigo } from '../model/entities/artigo';
 import { async } from '@angular/core/testing';
-import { _filter } from '../../../forms/auto-complete/states-group/states-group.component';
 import { DexieService } from 'src/app/utils/dexieService/dexieService';
 import { AppComponent } from 'src/app/app.component';
 import { Component, Inject, OnInit, ViewChild, AfterViewInit, AfterContentInit, AfterViewChecked } from '@angular/core';

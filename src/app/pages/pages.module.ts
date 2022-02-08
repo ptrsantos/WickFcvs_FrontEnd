@@ -10,6 +10,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import { MenuListItemComponent } from './layout/menu-list-item/menu-list-item.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     FlexLayoutModule,
     MaterialModule,
     FormsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    SharedModule
   ],
   exports: [
     LayoutComponent,
